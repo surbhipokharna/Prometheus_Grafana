@@ -37,7 +37,7 @@ receivers:
     from: surbhi@logicwind.com
     smarthost: smtp.gmail.com:587
     auth_username: surbhi@logicwind.com 
-    auth_password: Pokharna123
+    auth_password: *****
 
 - name: slack
   slack_configs:

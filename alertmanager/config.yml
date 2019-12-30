@@ -1,0 +1,49 @@
+# route:
+#   repeat_interval: 20s
+#   receiver: 'slack'
+
+#  receivers:
+#      - name: 'slack'
+#        slack_configs:
+#            - send_resolved: true
+#              username: 'Surbhi Pokhrana'
+#              channel: '#system_events'
+#              api_url: 'https://hooks.slack.com/services/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'
+#              text: "text123456789"
+
+
+          #  title: '{{ template "custom_title" . }}'
+          #  text: '{{ template "custom_slack_message" . }}'
+
+# templates:
+# - /alertmanager/notifications.tmpl
+route:
+  group_by: ['alertname', 'cluster', 'service']
+  repeat_interval: 10s
+  receiver: surbhi
+  routes:
+    - match:
+        severity: critical
+      continue: true
+      receiver: slack
+    - match:
+        severity: critical
+      receiver: surbhi
+
+receivers:
+- name: surbhi
+  email_configs:
+  - to: surbhipokharna98@gmail.com
+    from: surbhi@logicwind.com
+    smarthost: smtp.gmail.com:587
+    auth_username: surbhi@logicwind.com 
+    auth_password: Pokharna123
+
+- name: slack
+  slack_configs:
+    - send_resolved: true
+      username: 'Surbhi Pokhrana'
+      channel: '#system_events'
+      api_url: 'https://hooks.slack.com/services/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'
+
+

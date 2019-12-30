@@ -1,0 +1,11 @@
+groups:
+- name: targets
+  rules:
+  - alert: instance_down
+    expr: up == 0
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      identifier: '{{ $labels.instance }}'
+      description: '{{ $labels.job }} exporter job has been down for more than 5 minutes.'

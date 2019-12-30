@@ -1,0 +1,62 @@
+{
+    "datasource": null,
+    "cacheTimeout": null,
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 0
+    },
+    "id": 2,
+    "links": [],
+    "options": {
+      "displayMode": "gradient",
+      "orientation": "horizontal",
+      "fieldOptions": {
+        "values": true,
+        "calcs": [
+          "mean"
+        ],
+        "defaults": {
+          "min": 0,
+          "max": 100,
+          "thresholds": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ],
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "unit": "none"
+        },
+        "override": {}
+      }
+    },
+    "pluginVersion": "6.5.1",
+    "targets": [
+      {
+        "expr": "sum(http_request_duration_seconds_bucket) by (code)",
+        "instant": true,
+        "intervalFactor": 5,
+        "legendFormat": "",
+        "refId": "A"
+      }
+    ],
+    "timeFrom": null,
+    "timeShift": null,
+    "title": "Panel Title",
+    "type": "bargauge"
+  }
